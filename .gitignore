@@ -1,0 +1,38 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Archivos de build
+bin/
+obj/
+TestResults/
+out/
+*.log
+
+# Configs locales
+*.dbmdl
+*.pdb
+*.cache
+*.config.user
+
+# Git y sistema
+*.vsidx
+*.DS_Store
+Thumbs.db
+
+# SQLite y otros archivos de base de datos
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Archivos NuGet
+*.nupkg
+packages/
+*.snupkg
+*.NuGet.Config
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
