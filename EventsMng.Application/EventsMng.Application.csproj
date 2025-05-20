@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\FlightReservation.Domain\FlightReservation.Domain.csproj" />
+    <ProjectReference Include="..\EventsMng.Domain\EventsMng.Domain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

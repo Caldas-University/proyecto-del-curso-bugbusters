@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightReservation.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightReservation.Infrastructure", "FlightReservation.Infrastructure\FlightReservation.Infrastructure.csproj", "{F4B75429-20AD-466F-A674-68515F9358D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsMng.Api", "EventsMng.Api\EventsMng.Api.csproj", "{0A16F343-B737-327C-03A0-8F5EB0B1F48F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +35,15 @@ Global
 		{F4B75429-20AD-466F-A674-68515F9358D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4B75429-20AD-466F-A674-68515F9358D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4B75429-20AD-466F-A674-68515F9358D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A16F343-B737-327C-03A0-8F5EB0B1F48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A16F343-B737-327C-03A0-8F5EB0B1F48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A16F343-B737-327C-03A0-8F5EB0B1F48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A16F343-B737-327C-03A0-8F5EB0B1F48F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E1F58D0-DE8F-4248-BD3E-36B95C0A8438}
 	EndGlobalSection
 EndGlobal

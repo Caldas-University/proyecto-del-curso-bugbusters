@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlightReservation.Application\FlightReservation.Application.csproj" />
-    <ProjectReference Include="..\FlightReservation.Infrastructure\FlightReservation.Infrastructure.csproj" />
+    <ProjectReference Include="..\EventsMng.Application\EventsMng.Application.csproj" />
+    <ProjectReference Include="..\EventsMng.Infrastructure\EventsMng.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
