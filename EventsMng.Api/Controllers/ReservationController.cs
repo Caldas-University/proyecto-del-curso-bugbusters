@@ -1,7 +1,7 @@
-using FlightReservation.Application.Contracts.Services;
+using EventsMng.Application.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FlightReservation.Api.Controllers;
+namespace EventsMng.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

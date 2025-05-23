@@ -1,9 +1,9 @@
 ﻿using System;
-using FlightReservation.Application.Contracts.Services;
-using FlightReservation.Domain.Entities;
+using EventsMng.Application.Contracts.Services;
+using EventsMng.Domain.Entities;
 using System;
 
-namespace FlightReservation.Application.Services
+namespace EventsMng.Application.Services
 {
     public class ListaEsperaServiceApp : IListaEsperaServiceApp
     {

@@ -1,6 +1,6 @@
-@FlightReservation.Api_HostAddress = http://localhost:5034
+@EventsMng.Api_HostAddress = http://localhost:5034
 
-GET {{FlightReservation.Api_HostAddress}}/weatherforecast/
+GET {{EventsMng.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

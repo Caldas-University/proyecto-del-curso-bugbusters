@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightReservation.Domain.Repositories
+namespace EventsMng.Domain.Repositories
 {
     public interface ICertificadoRepository
     {

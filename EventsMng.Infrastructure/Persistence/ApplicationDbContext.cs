@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using FlightReservation.Domain.Entities;
+using EventsMng.Domain.Entities;
 
-namespace FlightReservation.Infrastructure.Persistence
+namespace EventsMng.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {

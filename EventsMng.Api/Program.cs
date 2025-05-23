@@ -1,14 +1,14 @@
-using FlightReservation.Application.Services;
-using FlightReservation.Infrastructure.Persistence;
-using FlightReservation.Infrastructure.Repositories;
+using EventsMng.Application.Services;
+using EventsMng.Infrastructure.Persistence;
+using EventsMng.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using FlightReservation.Application.Contracts.Services;
-using FlightReservation.Domain.Repositories;
+using EventsMng.Application.Contracts.Services;
+using EventsMng.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite("Data Source=flightreservation.db"));
+    options.UseSqlite("Data Source=EventsMng.db"));
 
 builder.Services.AddScoped<IEventoRepository, EventoRepository>();
 builder.Services.AddScoped<IParticipanteRepository, ParticipanteRepository>();

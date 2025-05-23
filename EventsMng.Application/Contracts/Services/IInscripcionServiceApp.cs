@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightReservation.Application.Contracts.Services
+namespace EventsMng.Application.Contracts.Services
 {
     public interface IInscripcionServiceApp
     {

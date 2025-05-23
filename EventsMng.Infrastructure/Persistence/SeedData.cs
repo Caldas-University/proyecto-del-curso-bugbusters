@@ -1,6 +1,6 @@
-namespace FlightReservation.Infrastructure.Persistence;
+namespace EventsMng.Infrastructure.Persistence;
 
-using FlightReservation.Domain.Entities;
+using EventsMng.Domain.Entities;
 
 public static class SeedData
 {

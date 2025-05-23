@@ -1,11 +1,11 @@
-﻿using FlightReservation.Domain.Repositories;
+﻿using EventsMng.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightReservation.Infrastructure.Repositories
+namespace EventsMng.Infrastructure.Repositories
 {
     public class InscripcionRepository : IInscripcionRepository
     {

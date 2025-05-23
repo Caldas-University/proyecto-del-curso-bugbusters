@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FlightReservation.Domain.Entities;
+using EventsMng.Domain.Entities;
 
-namespace FlightReservation.Application.Contracts.Services
+namespace EventsMng.Application.Contracts.Services
 {
     public interface IParticipanteServiceApp
     {

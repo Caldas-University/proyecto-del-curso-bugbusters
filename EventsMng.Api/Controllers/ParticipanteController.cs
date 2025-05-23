@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using FlightReservation.Domain.Entities;
+using EventsMng.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using FlightReservation.Infrastructure.Persistence;
+using EventsMng.Infrastructure.Persistence;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FlightReservation.Application.Contracts.Services;
-using FlightReservation.Domain.Entities;
+using EventsMng.Application.Contracts.Services;
+using EventsMng.Domain.Entities;
 
-namespace FlightReservation.Application.Services
+namespace EventsMng.Application.Services
 {
     public class EventoServiceApp : IEventoServiceApp
     {

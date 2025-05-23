@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightReservation.Domain.Entities
+namespace EventsMng.Domain.Entities
 {
     public class Inscripcion
     {

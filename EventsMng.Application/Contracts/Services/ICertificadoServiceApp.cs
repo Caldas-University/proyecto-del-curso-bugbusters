@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace FlightReservation.Application.Contracts.Services
+namespace EventsMng.Application.Contracts.Services
 {
     public interface ICertificadoServiceApp
     {
