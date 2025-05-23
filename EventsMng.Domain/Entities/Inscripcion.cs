@@ -18,6 +18,8 @@ namespace EventsMng.Domain.Entities
 
         public InscripcionEstado Estado { get; set; } = InscripcionEstado.Confirmada;
 
+        public Participante? Participante { get; set; }
+
         public Evento? Evento { get; set; }
     }
 

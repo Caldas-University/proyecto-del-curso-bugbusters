@@ -14,6 +14,4 @@ namespace EventsMng.Application.Contracts.Services
         Task CrearAsync(Guid id); // parámetro ficticio para que compile
     }
 }
-  }
-}
 
