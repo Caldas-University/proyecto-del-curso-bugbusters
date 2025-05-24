@@ -24,12 +24,6 @@ namespace EventsMng.Infrastructure.Persistence
                 .HasForeignKey(i => i.EventoId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Inscripcion>()
-                .HasOne<Participante>()
-                .WithMany()
-                .HasForeignKey(i => i.ParticipanteId)
-                .OnDelete(DeleteBehavior.Cascade);
-
             modelBuilder.Entity<Certificado>()
                 .HasOne(c => c.Evento)
                 .WithMany(e => e.Certificados)
@@ -40,6 +34,12 @@ namespace EventsMng.Infrastructure.Persistence
                 .HasOne(le => le.Evento)
                 .WithMany()
                 .HasForeignKey(le => le.EventoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Inscripcion>()
+                .HasOne(i => i.Participante)
+                .WithMany(p => p.Inscripciones)
+                .HasForeignKey(i => i.ParticipanteId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

@@ -19,6 +19,6 @@ namespace EventsMng.Domain.Entities
         public string Telefono { get; set; } = string.Empty;
 
         // Un Participante puede tener muchas Inscripciones
-        public ICollection<Inscripcion>? Inscripciones { get; set; } 
+        public ICollection<Inscripcion>? Inscripciones { get; set; } = new List<Inscripcion>();
     }
 }

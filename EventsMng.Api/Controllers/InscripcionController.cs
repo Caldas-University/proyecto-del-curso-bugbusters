@@ -41,5 +41,26 @@ public class InscripcionController : ControllerBase
             .Include(i => i.Participante)
             .ToListAsync();
     }
+
+    [HttpPost("{id}/cancelar")]
+    public async Task<IActionResult> CancelarInscripcion(Guid id)
+    {
+        var inscripcion = await _context.Inscripciones.FindAsync(id);
+
+        if (inscripcion == null)
+            return NotFound();
+
+        inscripcion.Estado = InscripcionEstado.Cancelada;
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+
+
+
+
+
 }
 

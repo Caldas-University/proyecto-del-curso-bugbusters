@@ -11,4 +11,5 @@ namespace EventsMng.Domain.Repositories
         Task InscribirAsync(Guid eventoId, Guid participanteId);
         Task ObtenerPorEventoAsync(Guid eventoId);
     }
+
 }

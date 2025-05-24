@@ -21,6 +21,11 @@ namespace EventsMng.Domain.Entities
         public Participante? Participante { get; set; }
 
         public Evento? Evento { get; set; }
+        public void Cancelar()
+        {
+            Estado = InscripcionEstado.Cancelada;
+        }
+
     }
 
     public enum InscripcionEstado
