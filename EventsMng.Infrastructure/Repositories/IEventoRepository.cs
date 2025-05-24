@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventsMng.Domain.Repositories
+namespace EventsMng.Infrastructure.Repositories
 {
-    public interface IParticipanteRepository
+    public interface IEventoRepository
     {
         Task ObtenerTodosAsync();
         Task ObtenerPorIdAsync(Guid id);
-        Task CrearAsync(Guid id); // para compilar
+        Task CrearAsync(Guid id); // parámetro ficticio para compilar
     }
 }
+

@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EventsMng.Domain\EventsMng.Domain.csproj" />
-    <ProjectReference Include="..\EventsMng.Application\EventsMng.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
