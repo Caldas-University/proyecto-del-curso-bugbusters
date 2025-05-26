@@ -25,8 +25,8 @@ namespace EventsMng.Infrastructure.Persistence
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Inscripcion>()
-                .HasOne<Participante>()
-                .WithMany()
+                .HasOne(i => i.Participante)
+                .WithMany(p => p.Inscripciones)
                 .HasForeignKey(i => i.ParticipanteId)
                 .OnDelete(DeleteBehavior.Cascade);
 

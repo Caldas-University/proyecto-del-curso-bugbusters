@@ -19,7 +19,7 @@ namespace EventsMng.Infrastructure.Repositories
         {
             return await _context.Inscripciones
                 .Where(i => i.ParticipanteId == participanteId)
-                .Include(i => i.Evento) // Para que puedas ver el nombre del evento, etc.
+                .Include(i => i.Evento)
                 .ToListAsync();
         }
 
