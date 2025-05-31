@@ -23,7 +23,5 @@ namespace EventsMng.Domain.Entities
         // Un evento puede tener varios certificados
         public ICollection<Certificado>? Certificados { get; set; }
 
-        public ICollection<Inscripcion>? Inscripciones { get; set; }
-
     }
 }

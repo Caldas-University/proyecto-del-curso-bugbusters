@@ -170,13 +170,13 @@ namespace EventsMng.Infrastructure.Migrations
             modelBuilder.Entity("EventsMng.Domain.Entities.Inscripcion", b =>
                 {
                     b.HasOne("EventsMng.Domain.Entities.Evento", "Evento")
-                        .WithMany("Inscripciones")
+                        .WithMany()
                         .HasForeignKey("EventoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EventsMng.Domain.Entities.Participante", "Participante")
-                        .WithMany("Inscripciones")
+                        .WithMany()
                         .HasForeignKey("ParticipanteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -200,13 +200,6 @@ namespace EventsMng.Infrastructure.Migrations
             modelBuilder.Entity("EventsMng.Domain.Entities.Evento", b =>
                 {
                     b.Navigation("Certificados");
-
-                    b.Navigation("Inscripciones");
-                });
-
-            modelBuilder.Entity("EventsMng.Domain.Entities.Participante", b =>
-                {
-                    b.Navigation("Inscripciones");
                 });
 #pragma warning restore 612, 618
         }
