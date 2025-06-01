@@ -69,5 +69,16 @@ public class InscripcionController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpPut("{inscripcionId}/cancelar")]
+    public async Task<IActionResult> CancelarInscripcion(Guid inscripcionId, [FromQuery] Guid participanteId)
+    {
+        var resultado = await _inscripcionService.CancelarInscripcionAsync(inscripcionId, participanteId);
+        if (!resultado)
+            return BadRequest("No se pudo cancelar la inscripción (verifica que aún se puede cancelar y que la inscripción pertenece al participante).");
+
+        return NoContent();
+    }
+
 }
 

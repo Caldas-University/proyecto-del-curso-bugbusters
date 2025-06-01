@@ -15,6 +15,7 @@ namespace EventsMng.Domain.Repositories
         Task<List<Inscripcion>> ObtenerPorParticipanteAsync(Guid participanteId);
         Task<Inscripcion?> ObtenerPorIdAsync(Guid inscripcionId);
         Task GuardarCambiosAsync();
+        Task<Inscripcion?> ObtenerPorIdConEventoAsync(Guid inscripcionId);
 
     }
 }

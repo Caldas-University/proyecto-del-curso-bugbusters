@@ -14,6 +14,7 @@ namespace EventsMng.Application.Contracts.Services
         Task InscribirAsync(Guid eventoId, Guid participanteId);
         Task<List<Inscripcion>> ObtenerInscripcionesAsync();
         Task<bool> ActualizarInscripcionAsync(Guid inscripcionId, ActualizarInscripcionDto dto);
+        Task<bool> CancelarInscripcionAsync(Guid inscripcionId, Guid participanteId);
 
     }
 }

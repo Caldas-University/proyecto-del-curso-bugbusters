@@ -44,5 +44,20 @@ namespace EventsMng.Application.Services
             return true;
         }
 
+        public async Task<bool> CancelarInscripcionAsync(Guid inscripcionId, Guid participanteId)
+        {
+            var inscripcion = await _inscripcionRepo.ObtenerPorIdConEventoAsync(inscripcionId);
+
+            if (inscripcion == null || inscripcion.ParticipanteId != participanteId)
+                return false;
+
+            if (inscripcion.Evento == null || !inscripcion.Evento.PuedeCancelar())
+                return false;
+
+            inscripcion.Estado = InscripcionEstado.Cancelada;
+            await _inscripcionRepo.GuardarCambiosAsync();
+            return true;
+        }
+
     }
 }
