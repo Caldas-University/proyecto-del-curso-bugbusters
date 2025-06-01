@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EventsMng.Application.Contracts.Dtos.Inscripcion;
 using EventsMng.Application.Contracts.Services;
 using EventsMng.Domain.Entities;
 using EventsMng.Domain.Repositories;
@@ -22,5 +23,26 @@ namespace EventsMng.Application.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<Inscripcion>> ObtenerInscripcionesAsync()
+        {
+            return await _inscripcionRepo.ObtenerTodos();
+        }
+
+        public async Task<bool> ActualizarInscripcionAsync(Guid inscripcionId, ActualizarInscripcionDto dto)
+        {
+            var inscripcion = await _inscripcionRepo.ObtenerPorIdAsync(inscripcionId);
+            if (inscripcion == null) return false;
+
+            if (dto.ParticipanteId.HasValue)
+                inscripcion.ParticipanteId = dto.ParticipanteId.Value;
+
+            if (dto.Estado.HasValue)
+                inscripcion.Estado = (InscripcionEstado)dto.Estado.Value;
+
+            await _inscripcionRepo.GuardarCambiosAsync();
+            return true;
+        }
+
     }
 }

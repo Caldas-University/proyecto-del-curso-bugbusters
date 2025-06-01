@@ -3,6 +3,7 @@ using EventsMng.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using EventsMng.Infrastructure.Persistence;
 using EventsMng.Application.Contracts.Services;
+using EventsMng.Application.Contracts.Dtos.Inscripcion;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -36,6 +37,13 @@ public class InscripcionController : ControllerBase
         return Ok(inscripcion);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetInscripciones()
+    {
+        var inscripciones = await _inscripcionService.ObtenerInscripcionesAsync();
+        return Ok(inscripciones);
+    }
+
     [HttpGet("{eventoId}/participantes")]
     public async Task<IEnumerable<Inscripcion>> GetParticipantesPorEvento(Guid eventoId)
     {
@@ -50,6 +58,16 @@ public class InscripcionController : ControllerBase
     {
         var historial = await _inscripcionService.ObtenerHistorialPorParticipanteAsync(participanteId);
         return Ok(historial);
+    }
+
+    [HttpPut("{inscripcionId}")]
+    public async Task<IActionResult> ActualizarInscripcion(Guid inscripcionId, [FromBody] ActualizarInscripcionDto dto)
+    {
+        var actualizado = await _inscripcionService.ActualizarInscripcionAsync(inscripcionId, dto);
+        if (!actualizado)
+            return NotFound();
+
+        return NoContent();
     }
 }
 

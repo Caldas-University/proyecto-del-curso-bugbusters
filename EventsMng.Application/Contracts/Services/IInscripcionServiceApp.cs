@@ -1,4 +1,5 @@
-﻿using EventsMng.Domain.Entities;
+﻿using EventsMng.Application.Contracts.Dtos.Inscripcion;
+using EventsMng.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,8 @@ namespace EventsMng.Application.Contracts.Services
     {
         Task<List<Inscripcion>> ObtenerHistorialPorParticipanteAsync(Guid participanteId);
         Task InscribirAsync(Guid eventoId, Guid participanteId);
+        Task<List<Inscripcion>> ObtenerInscripcionesAsync();
+        Task<bool> ActualizarInscripcionAsync(Guid inscripcionId, ActualizarInscripcionDto dto);
+
     }
 }
