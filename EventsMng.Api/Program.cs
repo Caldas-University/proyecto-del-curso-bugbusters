@@ -16,7 +16,6 @@ builder.Services.AddScoped<ICertificadoRepository, CertificadoRepository>();
 builder.Services.AddScoped<IListaEsperaRepository, ListaEsperaRepository>();
 builder.Services.AddScoped<IInscripcionRepository, InscripcionRepository>();
 
-
 // aqui se asocia la interfaz con la logica
 builder.Services.AddScoped<IEventoServiceApp, EventoServiceApp>();
 builder.Services.AddScoped<IParticipanteServiceApp, ParticipanteServiceApp>();
@@ -35,7 +34,6 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     SeedData.Initialize(dbContext);
 }
-
 
 app.UseSwagger();
 app.UseSwaggerUI();
