@@ -1,7 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="FluentResults" Version="3.16.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EventsMng.Domain\EventsMng.Domain.csproj" />
+    <ProjectReference Include="..\EventsMng.Infrastructure\EventsMng.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

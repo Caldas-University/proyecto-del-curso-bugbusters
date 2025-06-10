@@ -25,8 +25,8 @@ namespace EventsMng.Domain.Entities
 
     public enum InscripcionEstado
     {
-        Confirmada,
-        Cancelada,
-        Asistio
+        Confirmada = 0,
+        Cancelada = 1,
+        Asistio = 2
     }
 }
