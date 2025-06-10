@@ -8,7 +8,7 @@ using EventsMng.Domain.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite("Data Source=EventsMng.db"));
+    options.UseSqlite("Data Source=../EventsMng.Infrastructure/events.sqlite"));
 
 builder.Services.AddScoped<IEventoRepository, EventoRepository>();
 builder.Services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
@@ -22,6 +22,7 @@ builder.Services.AddScoped<IEventoServiceApp, EventoServiceApp>();
 builder.Services.AddScoped<IParticipanteServiceApp, ParticipanteServiceApp>();
 builder.Services.AddScoped<ICertificadoServiceApp, CertificadoServiceApp>();
 builder.Services.AddScoped<IListaEsperaServiceApp, ListaEsperaServiceApp>();
+builder.Services.AddScoped<IInscripcionServiceApp, InscripcionServiceApp>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
