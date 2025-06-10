@@ -31,4 +31,12 @@ public class CertificadoController : ControllerBase
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(ObtenerPorCodigo), new { codigo = certificado.CodigoVerificacion }, certificado);
     }
+
+    [HttpPost("verificar-elegibilidad")]
+    public IActionResult VerificarElegibilidad([FromBody] VerificarElegibilidadDto dto)
+    {
+        var esElegible = _certificadoServiceApp.VerificarElegibilidad(dto);
+        return Ok(new { Elegible = esElegible });
+    }
+
 }

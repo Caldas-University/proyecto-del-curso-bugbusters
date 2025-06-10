@@ -55,5 +55,12 @@ namespace EventsMng.Infrastructure.Repositories
                 .FirstOrDefaultAsync(i => i.Id == inscripcionId);
         }
 
+        public Inscripcion ObtenerInscripcion(int participanteId, int eventoId)
+        {
+            return _context.Inscripciones
+                .FirstOrDefault(i => i.ParticipanteId == participanteId && i.EventoId == eventoId);
+        }
+
+
     }
 }

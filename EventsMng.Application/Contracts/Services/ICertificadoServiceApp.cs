@@ -10,6 +10,7 @@ namespace EventsMng.Application.Contracts.Services
     {
         Task ObtenerPorCodigoAsync(string codigo);
         Task GenerarAsync(string codigo); // parámetro ficticio
+        bool VerificarElegibilidad(VerificarElegibilidadDto dto);
     }
 }
 

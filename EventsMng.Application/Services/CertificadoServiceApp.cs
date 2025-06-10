@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EventsMng.Application.Contracts.Services;
+﻿using EventsMng.Application.Contracts.Dtos.Certificado;
+using EventsMng.Infrastructure.Repositories;
 
-namespace EventsMng.Application.Services
+public class CertificadoServiceApp : ICertificadoServiceApp
 {
-    public class CertificadoServiceApp : ICertificadoServiceApp
-    {
-        public Task ObtenerPorCodigoAsync(string codigo)
-        {
-            throw new NotImplementedException();
-        }
+    private readonly IInscripcionRepository _inscripcionRepository;
 
-        public Task GenerarAsync(string codigo)
-        {
-            throw new NotImplementedException();
-        }
+    public CertificadoServiceApp(IInscripcionRepository inscripcionRepository)
+    {
+        _inscripcionRepository = inscripcionRepository;
+    }
+
+    public bool VerificarElegibilidad(VerificarElegibilidadDto dto)
+    {
+        var inscripcion = _inscripcionRepository
+            .ObtenerInscripcion(dto.ParticipanteId, dto.EventoId);
+
+        if (inscripcion == null)
+            return false;
+
+        // Ejemplo: debe estar aprobado y haber asistido
+        return inscripcion.EstaAprobado && inscripcion.Asistencia >= 80;
     }
 }
-
