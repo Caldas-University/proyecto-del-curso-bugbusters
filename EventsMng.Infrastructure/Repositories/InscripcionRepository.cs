@@ -43,10 +43,16 @@ namespace EventsMng.Infrastructure.Repositories
             return await _context.Inscripciones.FindAsync(inscripcionId);
         }
 
-
         public async Task GuardarCambiosAsync()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Inscripcion?> ObtenerPorIdConEventoAsync(Guid inscripcionId)
+        {
+            return await _context.Inscripciones
+                .Include(i => i.Evento)
+                .FirstOrDefaultAsync(i => i.Id == inscripcionId);
         }
 
     }

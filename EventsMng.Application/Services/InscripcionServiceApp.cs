@@ -44,5 +44,27 @@ namespace EventsMng.Application.Services
             return true;
         }
 
+        public async Task<bool> CancelarInscripcionAsync(Guid inscripcionId, Guid participanteId)
+        {
+            var inscripcion = await _inscripcionRepo.ObtenerPorIdConEventoAsync(inscripcionId);
+
+            // Validar existencia y que pertenezca al participante
+            if (inscripcion == null || inscripcion.ParticipanteId != participanteId)
+                return false;
+
+            // Validar estado actual
+            if (inscripcion.Estado == InscripcionEstado.Cancelada || inscripcion.Estado == InscripcionEstado.Asistio)
+                return false;
+
+            // Validar que el evento permita cancelación
+            if (inscripcion.Evento == null || !inscripcion.Evento.PuedeCancelar())
+                return false;
+
+            // Cancelar inscripción
+            inscripcion.Estado = InscripcionEstado.Cancelada;
+            await _inscripcionRepo.GuardarCambiosAsync();
+            return true;
+        }
+
     }
 }
