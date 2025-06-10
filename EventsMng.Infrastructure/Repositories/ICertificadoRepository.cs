@@ -10,5 +10,6 @@ namespace EventsMng.Infrastructure.Repositories
     {
         Task ObtenerPorCodigoAsync(string codigo);
         Task GenerarAsync(string codigo); // parámetro para compilar
+        Task<Certificado?> ObtenerPorEventoYParticipanteAsync(Guid eventoId, Guid participanteId);
     }
 }

@@ -80,5 +80,13 @@ public class InscripcionController : ControllerBase
         return NoContent();
     }
 
+    [HttpGet("historial-detallado/{participanteId}")]
+    public async Task<IActionResult> ObtenerHistorialDetallado(Guid participanteId)
+    {
+        var historial = await _inscripcionServiceApp.ObtenerHistorialDetalladoAsync(participanteId);
+        return Ok(historial);
+    }
+
+
 }
 

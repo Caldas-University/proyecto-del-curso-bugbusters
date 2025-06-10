@@ -22,6 +22,7 @@ builder.Services.AddScoped<IParticipanteServiceApp, ParticipanteServiceApp>();
 builder.Services.AddScoped<ICertificadoServiceApp, CertificadoServiceApp>();
 builder.Services.AddScoped<IListaEsperaServiceApp, ListaEsperaServiceApp>();
 builder.Services.AddScoped<IInscripcionServiceApp, InscripcionServiceApp>();
+builder.Services.AddScoped<ICertificadoRepository, CertificadoRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

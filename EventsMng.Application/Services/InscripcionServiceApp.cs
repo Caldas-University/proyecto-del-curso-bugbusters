@@ -10,9 +10,13 @@ using EventsMng.Domain.Repositories;
 
 namespace EventsMng.Application.Services
 {
-    public class InscripcionServiceApp(IInscripcionRepository inscripcionRepo) : IInscripcionServiceApp
+    public class InscripcionServiceApp(IInscripcionRepository inscripcionRepo,
+    IEventoRepository eventoRepo,
+    ICertificadoRepository certificadoRepo) : IInscripcionServiceApp
     {
         private readonly IInscripcionRepository _inscripcionRepo = inscripcionRepo;
+        private readonly IEventoRepository _eventoRepo = eventoRepo;
+        private readonly ICertificadoRepository _certificadoRepo = certificadoRepo;
 
         public async Task<List<Inscripcion>> ObtenerHistorialPorParticipanteAsync(Guid participanteId)
         {
@@ -65,6 +69,31 @@ namespace EventsMng.Application.Services
             await _inscripcionRepo.GuardarCambiosAsync();
             return true;
         }
+
+        public async Task<List<HistorialParticipacionDto>> ObtenerHistorialDetalladoAsync(Guid participanteId)
+        {
+            var inscripciones = await _inscripcionRepo.ObtenerPorParticipanteAsync(participanteId);
+            var historial = new List<HistorialParticipacionDto>();
+
+            foreach (var inscripcion in inscripciones)
+            {
+                var evento = await _eventoRepo.ObtenerPorIdAsync(inscripcion.EventoId);
+                var certificado = await _certificadoRepo.ObtenerPorEventoYParticipanteAsync(inscripcion.EventoId, participanteId);
+
+                historial.Add(new HistorialParticipacionDto
+                {
+                    EventoId = evento.Id,
+                    NombreEvento = evento.Nombre,
+                    FechaEvento = evento.Fecha,
+                    Estado = inscripcion.Estado.ToString(),
+                    Asistencia = inscripcion.Asistencia,
+                    CertificadoEmitido = certificado != null
+                });
+            }
+
+            return historial;
+        }
+
 
     }
 }

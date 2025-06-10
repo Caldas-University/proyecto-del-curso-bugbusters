@@ -1,4 +1,5 @@
 ﻿using EventsMng.Application.Contracts.Dtos.Inscripcion;
+using EventsMng.Application.Contracts.Dtos.Inscripcion;
 using EventsMng.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace EventsMng.Application.Contracts.Services
         Task<List<Inscripcion>> ObtenerInscripcionesAsync();
         Task<bool> ActualizarInscripcionAsync(Guid inscripcionId, ActualizarInscripcionDto dto);
         Task<bool> CancelarInscripcionAsync(Guid inscripcionId, Guid participanteId);
+        Task<List<HistorialParticipacionDto>> ObtenerHistorialDetalladoAsync(Guid participanteId);
+
 
     }
 }

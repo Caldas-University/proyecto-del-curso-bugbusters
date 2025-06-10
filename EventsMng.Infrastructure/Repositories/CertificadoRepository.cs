@@ -1,22 +1,25 @@
-﻿using EventsMng.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EventsMng.Domain.Entities;
+using EventsMng.Domain.Repositories;
+using EventsMng.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
-namespace EventsMng.Infrastructure.Repositories
+public class CertificadoRepository(ApplicationDbContext context) : ICertificadoRepository
 {
-    public class CertificadoRepository : ICertificadoRepository
-    {
-        public Task ObtenerPorCodigoAsync(string codigo)
-        {
-            throw new NotImplementedException();
-        }
+    private readonly ApplicationDbContext _context = context;
 
-        public Task GenerarAsync(string codigo)
-        {
-            throw new NotImplementedException();
-        }
+    public Task<Certificado?> ObtenerPorCodigoAsync(string codigo)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task GenerarAsync(string codigo)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<Certificado?> ObtenerPorEventoYParticipanteAsync(Guid eventoId, Guid participanteId)
+    {
+        return await _context.Certificados
+            .FirstOrDefaultAsync(c => c.EventoId == eventoId && c.ParticipanteId == participanteId);
     }
 }
