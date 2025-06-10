@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EventsMng.Domain\EventsMng.Domain.csproj" />
-    <ProjectReference Include="..\EventsMng.Application\EventsMng.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -12,10 +11,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <PropertyGroup>
