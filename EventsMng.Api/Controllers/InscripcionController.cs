@@ -50,12 +50,28 @@ public class InscripcionController : ControllerBase
         if (inscripcion == null)
             return NotFound();
 
-        inscripcion.Estado = InscripcionEstado.Cancelada;
+        // Solo actuamos si está confirmada, para no "liberar doble"
+        if (inscripcion.Estado == InscripcionEstado.Confirmada)
+        {
+            inscripcion.Estado = InscripcionEstado.Cancelada;
+            await _context.SaveChangesAsync();
 
-        await _context.SaveChangesAsync();
+            // Buscar la primera inscripción cancelada por falta de cupo para reactivarla
+            var otraPendiente = await _context.Inscripciones
+                .Where(i => i.EventoId == inscripcion.EventoId && i.Estado == InscripcionEstado.Cancelada)
+                .OrderBy(i => i.FechaInscripcion) // Suponiendo que tenés una propiedad para saber el orden
+                .FirstOrDefaultAsync();
+
+            if (otraPendiente != null)
+            {
+                otraPendiente.Estado = InscripcionEstado.Confirmada;
+                await _context.SaveChangesAsync();
+            }
+        }
 
         return NoContent();
     }
+
 
 
 

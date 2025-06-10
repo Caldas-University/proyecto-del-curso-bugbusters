@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EventsMng.Domain.Entities;
+﻿using EventsMng.Domain.Entities;
 
 namespace EventsMng.Application.Contracts.Services
 {
     public interface IEventoServiceApp
     {
-        Task ObtenerTodosAsync();
-        Task ObtenerPorIdAsync(Guid id);
-        Task CrearAsync(Guid eventoId);
+        Task<IEnumerable<Evento>> ObtenerTodosAsync();
+        Task<Evento> ObtenerPorIdAsync(Guid id);
+        Task CrearAsync(Evento evento);
+        Task LiberarCupoAsync(Guid eventoId, Guid inscripcionId);
     }
 }

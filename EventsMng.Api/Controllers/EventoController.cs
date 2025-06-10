@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EventsMng.Infrastructure.Persistence;
+using EventsMng.Application.Contracts.Services;
 
 namespace EventsMng.API.Controllers
 {
@@ -10,11 +11,16 @@ namespace EventsMng.API.Controllers
     public class EventoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IEventoServiceApp _eventoService;
+        
 
-        public EventoController(ApplicationDbContext context)
+        public EventoController(ApplicationDbContext context, IEventoServiceApp eventoService)
         {
-            _context = context;
+
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _eventoService = eventoService;
         }
+        
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Evento>>> GetEventos()
@@ -60,6 +66,19 @@ namespace EventsMng.API.Controllers
             _context.Eventos.Remove(evento);
             await _context.SaveChangesAsync();
             return NoContent();
+        }
+        [HttpPost("{eventoId}/liberar-cupo/{inscripcionId}")]
+        public async Task<IActionResult> LiberarCupo(Guid eventoId, Guid inscripcionId)
+        {
+            try
+            {
+                await _eventoService.LiberarCupoAsync(eventoId, inscripcionId);
+                return Ok(new { mensaje = "Cupo liberado correctamente." });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { error = ex.Message });
+            }
         }
     }
 }

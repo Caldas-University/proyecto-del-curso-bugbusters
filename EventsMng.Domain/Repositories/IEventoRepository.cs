@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EventsMng.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,10 @@ namespace EventsMng.Domain.Repositories
 {
     public interface IEventoRepository
     {
-        Task ObtenerTodosAsync();
-        Task ObtenerPorIdAsync(Guid id);
-        Task CrearAsync(Guid id); // parámetro ficticio para compilar
+        Task<List<Evento>> ObtenerTodosAsync();
+        Task<Evento?> ObtenerPorIdAsync(Guid id);
+        Task CrearAsync(Evento evento);
+        Task ActualizarAsync(Evento evento);
     }
 }
 

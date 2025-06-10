@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using EventsMng.Application.Contracts.Services;
 using EventsMng.Domain.Repositories;
 
+// Se elimina la referencia redundante para evitar ambigüedad
+// using EventsMng.Application.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=EventsMng.db"));
@@ -15,14 +19,10 @@ builder.Services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
 builder.Services.AddScoped<ICertificadoRepository, CertificadoRepository>();
 builder.Services.AddScoped<IListaEsperaRepository, ListaEsperaRepository>();
 builder.Services.AddScoped<IInscripcionRepository, InscripcionRepository>();
-
-
-// aqui se asocia la interfaz con la logica
 builder.Services.AddScoped<IEventoServiceApp, EventoServiceApp>();
 builder.Services.AddScoped<IParticipanteServiceApp, ParticipanteServiceApp>();
 builder.Services.AddScoped<ICertificadoServiceApp, CertificadoServiceApp>();
 builder.Services.AddScoped<IListaEsperaServiceApp, ListaEsperaServiceApp>();
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -35,8 +35,25 @@ using (var scope = app.Services.CreateScope())
     SeedData.Initialize(dbContext);
 }
 
-
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
 app.Run();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+app.UseCors("AllowAll");
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
+
