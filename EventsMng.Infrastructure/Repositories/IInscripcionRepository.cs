@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventsMng.Domain.Repositories
+namespace EventsMng.Infrastructure.Repositories
 {
     public interface IInscripcionRepository
     {

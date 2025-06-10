@@ -1,4 +1,6 @@
-﻿using EventsMng.Domain.Repositories;
+﻿using EventsMng.Domain.Entities;
+using EventsMng.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +11,31 @@ namespace EventsMng.Infrastructure.Repositories
 {
     public class ListaEsperaRepository : IListaEsperaRepository
     {
-        public Task AgregarAsync(Guid eventoId, Guid participanteId)
+        private readonly ApplicationDbContext _context;
+        public async Task AgregarAsync(Guid eventoId, Guid participanteId)
         {
-            throw new NotImplementedException();
+            _context.ListasEspera.Add(new ListaEspera
+            {
+                EventoId = eventoId,
+                ParticipanteId = participanteId,
+                FechaRegistro = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
         }
 
-        public Task ObtenerPorEventoAsync(Guid eventoId)
+        public async Task<List<ListaEspera>> ObtenerPorEventoAsync(Guid eventoId)
         {
-            throw new NotImplementedException();
+            return await _context.ListasEspera
+            .Where(le => le.EventoId == eventoId)
+            .OrderBy(le => le.FechaRegistro)
+    .       ToListAsync();
+        }
+
+        public async Task<bool> YaEstaEnLista(Guid eventoId, Guid participanteId)
+        {
+            return await _context.ListasEspera
+                .AnyAsync(le => le.EventoId == eventoId && le.ParticipanteId == participanteId);
         }
     }
 }
