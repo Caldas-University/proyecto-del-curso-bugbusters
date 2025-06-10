@@ -1,10 +1,14 @@
-namespace EventsMng.Infrastructure.Persistence;
-
 using EventsMng.Domain.Entities;
 
-public static class SeedData
+namespace EventsMng.Infrastructure.Persistence
 {
-    public static void Initialize(ApplicationDbContext context)
+    public static class SeedData
     {
+        public static void Initialize(ApplicationDbContext context)
+        {
+            // Asegúrate de que la base de datos esté creada
+            context.Database.EnsureCreated();
+
+        }
     }
 }
