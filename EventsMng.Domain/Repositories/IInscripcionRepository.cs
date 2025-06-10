@@ -10,7 +10,11 @@ namespace EventsMng.Domain.Repositories
     public interface IInscripcionRepository
     {
         Task InscribirAsync(Guid eventoId, Guid participanteId);
+        Task<List<Inscripcion>> ObtenerTodos();
         Task ObtenerPorEventoAsync(Guid eventoId);
         Task<List<Inscripcion>> ObtenerPorParticipanteAsync(Guid participanteId);
+        Task<Inscripcion?> ObtenerPorIdAsync(Guid inscripcionId);
+        Task GuardarCambiosAsync();
+
     }
 }

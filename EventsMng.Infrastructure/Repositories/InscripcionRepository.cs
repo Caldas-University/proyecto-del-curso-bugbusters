@@ -23,6 +23,11 @@ namespace EventsMng.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Inscripcion>> ObtenerTodos()
+        {
+            return await _context.Inscripciones.ToListAsync();
+        }
+
         public Task InscribirAsync(Guid eventoId, Guid participanteId)
         {
             throw new NotImplementedException();
@@ -32,5 +37,17 @@ namespace EventsMng.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public async Task<Inscripcion?> ObtenerPorIdAsync(Guid inscripcionId)
+        {
+            return await _context.Inscripciones.FindAsync(inscripcionId);
+        }
+
+
+        public async Task GuardarCambiosAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
     }
 }
