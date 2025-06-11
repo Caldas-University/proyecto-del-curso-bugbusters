@@ -1,5 +1,4 @@
-﻿using EventsMng.Domain.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace EventsMng.Infrastructure.Repositories
 {
-    public class ListaEsperaRepository : IListaEsperaRepository
+    public class CertificadoRepository : ICertificadoRepository
     {
-        public Task AgregarAsync(Guid eventoId, Guid participanteId)
+        public Task ObtenerPorCodigoAsync(string codigo)
         {
             throw new NotImplementedException();
         }
 
-        public Task ObtenerPorEventoAsync(Guid eventoId)
+        public Task GenerarAsync(string codigo)
         {
             throw new NotImplementedException();
         }

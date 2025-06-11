@@ -20,10 +20,17 @@ namespace EventsMng.Domain.Entities
 
         public bool OfreceCertificado { get; set; }
 
+        public bool PuedeCancelar()
+        {
+            return DateTime.UtcNow < FechaInicio;
+        }
+
+        public bool ListaEsperaHabilitada { get; set; } = false;
+
+        public int CuposDisponibles { get; set; } = 0;
+
         // Un evento puede tener varios certificados
         public ICollection<Certificado>? Certificados { get; set; }
-
-        public ICollection<Inscripcion>? Inscripciones { get; set; }
 
     }
 }

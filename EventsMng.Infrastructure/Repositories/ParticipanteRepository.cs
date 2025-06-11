@@ -1,5 +1,4 @@
-﻿using EventsMng.Domain.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsMng.Infrastructure.Repositories
 {
-    public class EventoRepository : IEventoRepository
+    public class ParticipanteRepository : IParticipanteRepository
     {
         public Task ObtenerTodosAsync()
         {
