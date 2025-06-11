@@ -20,7 +20,7 @@ namespace EventsMng.Infrastructure.Persistence
 
             modelBuilder.Entity<Inscripcion>()
                 .HasOne(i => i.Evento)
-                .WithMany(e => e.Inscripciones)
+                .WithMany()
                 .HasForeignKey(i => i.EventoId)
                 .OnDelete(DeleteBehavior.Cascade);
 

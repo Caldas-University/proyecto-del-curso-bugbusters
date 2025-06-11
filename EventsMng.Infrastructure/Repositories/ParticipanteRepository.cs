@@ -5,16 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventsMng.Infrastructure.Repositories
+namespace EventsMng.Domain.Repositories
 {
-    public class ListaEsperaRepository : IListaEsperaRepository
+    public class ParticipanteRepository : IParticipanteRepository
     {
-        public Task AgregarAsync(Guid eventoId, Guid participanteId)
+        public Task ObtenerTodosAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task ObtenerPorEventoAsync(Guid eventoId)
+        public Task ObtenerPorIdAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CrearAsync(Guid id)
         {
             throw new NotImplementedException();
         }

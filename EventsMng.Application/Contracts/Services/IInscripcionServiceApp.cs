@@ -9,5 +9,10 @@ namespace EventsMng.Application.Contracts.Services
     public interface IInscripcionServiceApp
     {
         Task InscribirAsync(Guid eventoId, Guid participanteId);
+
+        Task CancelarAsync(Guid eventoId, Guid participanteId);      
+        Task RegistrarAsistenciaAsync(Guid eventoId, Guid participanteId);
+
+
     }
 }

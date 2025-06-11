@@ -5,21 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventsMng.Infrastructure.Repositories
+namespace EventsMng.Infrastructure.Persistence
 {
-    public class EventoRepository : IEventoRepository
+    public class CertificadoRepository : ICertificadoRepository
     {
-        public Task ObtenerTodosAsync()
+        public Task ObtenerPorCodigoAsync(string codigo)
         {
             throw new NotImplementedException();
         }
 
-        public Task ObtenerPorIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CrearAsync(Guid id)
+        public Task GenerarAsync(string codigo)
         {
             throw new NotImplementedException();
         }

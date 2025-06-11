@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EventsMng.Domain.Entities;
 
 namespace EventsMng.Domain.Repositories
 {
     public interface IListaEsperaRepository
     {
-        Task AgregarAsync(Guid eventoId, Guid participanteId);
-        Task ObtenerPorEventoAsync(Guid eventoId);
+        Task AgregarAsync(ListaEspera listaEspera);
+        Task GuardarCambiosAsync();
     }
 }

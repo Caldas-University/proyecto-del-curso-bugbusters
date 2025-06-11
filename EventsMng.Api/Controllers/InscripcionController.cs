@@ -1,45 +1,37 @@
-﻿using Microsoft.EntityFrameworkCore;
-using EventsMng.Domain.Entities;
-using Microsoft.AspNetCore.Mvc;
-using EventsMng.Infrastructure.Persistence;
+﻿using Microsoft.AspNetCore.Mvc;
+using EventsMng.Application.Contracts.Services;
 
 [ApiController]
 [Route("api/[controller]")]
 public class InscripcionController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IInscripcionServiceApp _inscripcionService;
 
-    public InscripcionController(ApplicationDbContext context)
+    public InscripcionController(IInscripcionServiceApp inscripcionService)
     {
-        _context = context;
+        _inscripcionService = inscripcionService;
     }
 
-    [HttpPost]
+    [HttpPost("inscribir")]
     public async Task<IActionResult> Inscribirse(Guid eventoId, Guid participanteId)
     {
-        var cupoOcupado = await _context.Inscripciones.CountAsync(i => i.EventoId == eventoId && i.Estado == InscripcionEstado.Confirmada);
-        var cupoMaximo = (await _context.Eventos.FindAsync(eventoId))?.CupoMaximo ?? 0;
-
-        var inscripcion = new Inscripcion
-        {
-            EventoId = eventoId,
-            ParticipanteId = participanteId,
-            Estado = cupoOcupado < cupoMaximo ? InscripcionEstado.Confirmada : InscripcionEstado.Cancelada
-        };
-
-        _context.Inscripciones.Add(inscripcion);
-        await _context.SaveChangesAsync();
-
-        return Ok(inscripcion);
+        await _inscripcionService.InscribirAsync(eventoId, participanteId);
+        return Ok("Inscripción procesada correctamente");
     }
 
-    [HttpGet("{eventoId}/participantes")]
-    public async Task<IEnumerable<Inscripcion>> GetParticipantesPorEvento(Guid eventoId)
+    [HttpPost("cancelar")]
+    public async Task<IActionResult> Cancelar(Guid eventoId, Guid participanteId)
     {
-        return await _context.Inscripciones
-            .Where(i => i.EventoId == eventoId)
-            .Include(i => i.Participante)
-            .ToListAsync();
+        await _inscripcionService.CancelarAsync(eventoId, participanteId);
+        return Ok("Inscripción cancelada correctamente");
+    }
+
+    [HttpPost("asistencia")]
+    public async Task<IActionResult> RegistrarAsistencia(Guid eventoId, Guid participanteId)
+    {
+        await _inscripcionService.RegistrarAsistenciaAsync(eventoId, participanteId);
+        return Ok("Asistencia registrada correctamente");
     }
 }
+
 
