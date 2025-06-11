@@ -1,11 +1,9 @@
 ﻿using EventsMng.Domain.Entities;
-using EventsMng.Domain.Repositories;
 using EventsMng.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EventsMng.Infrastructure.Repositories
@@ -55,7 +53,7 @@ namespace EventsMng.Infrastructure.Repositories
                 .FirstOrDefaultAsync(i => i.Id == inscripcionId);
         }
 
-        public Inscripcion ObtenerInscripcion(int participanteId, int eventoId)
+        public Inscripcion ObtenerInscripcion(Guid participanteId, Guid eventoId)
         {
             return _context.Inscripciones
                 .FirstOrDefault(i => i.ParticipanteId == participanteId && i.EventoId == eventoId);

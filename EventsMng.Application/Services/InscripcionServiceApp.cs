@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EventsMng.Application.Contracts.Dtos.Inscripcion;
-using EventsMng.Application.Contracts.Services;
 using EventsMng.Domain.Entities;
-using EventsMng.Domain.Repositories;
+using EventsMng.Application.Contracts.Dtos.Certificado;
+using EventsMng.Application.Contracts.Services;
+using EventsMng.Infrastructure.Repositories;
 
 namespace EventsMng.Application.Services
 {
@@ -23,7 +24,7 @@ namespace EventsMng.Application.Services
             return await _inscripcionRepo.ObtenerPorParticipanteAsync(participanteId);
         }
 
-        public Task InscribirAsync(Guid eventoId, Guid participanteId)
+        public async Task InscribirAsync(Guid eventoId, Guid participanteId)
         {
             throw new NotImplementedException();
         }
@@ -86,8 +87,7 @@ namespace EventsMng.Application.Services
                     NombreEvento = evento.Nombre,
                     FechaEvento = evento.Fecha,
                     Estado = inscripcion.Estado.ToString(),
-                    Asistencia = inscripcion.Asistencia,
-                    CertificadoEmitido = certificado != null
+                    CertificadoEmitido = certificado != null 
                 });
             }
 

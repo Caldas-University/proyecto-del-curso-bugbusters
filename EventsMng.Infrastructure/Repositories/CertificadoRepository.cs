@@ -1,12 +1,11 @@
 ﻿using EventsMng.Domain.Entities;
-using EventsMng.Domain.Repositories;
+using EventsMng.Infrastructure.Repositories;
 using EventsMng.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 public class CertificadoRepository(ApplicationDbContext context) : ICertificadoRepository
 {
     private readonly ApplicationDbContext _context = context;
-
     public Task<Certificado?> ObtenerPorCodigoAsync(string codigo)
     {
         throw new NotImplementedException();

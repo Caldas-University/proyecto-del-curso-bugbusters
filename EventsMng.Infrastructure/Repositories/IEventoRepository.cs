@@ -9,7 +9,7 @@ namespace EventsMng.Infrastructure.Repositories
     public interface IEventoRepository
     {
         Task ObtenerTodosAsync();
-        Task ObtenerPorIdAsync(Guid id);
+        Task<Evento?> ObtenerPorIdAsync(Guid id);
         Task CrearAsync(Guid id); // parámetro ficticio para compilar
     }
 }

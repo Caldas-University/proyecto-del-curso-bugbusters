@@ -1,5 +1,4 @@
 ﻿using EventsMng.Application.Contracts.Dtos.Inscripcion;
-using EventsMng.Application.Contracts.Dtos.Inscripcion;
 using EventsMng.Domain.Entities;
 using System;
 using System.Collections.Generic;

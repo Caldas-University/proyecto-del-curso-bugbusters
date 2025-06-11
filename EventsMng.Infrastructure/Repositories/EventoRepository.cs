@@ -1,9 +1,10 @@
-﻿using EventsMng.Domain.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EventsMng.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventsMng.Infrastructure.Repositories
 {
@@ -14,9 +15,10 @@ namespace EventsMng.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task ObtenerPorIdAsync(Guid id)
+        public async Task<Evento?> ObtenerPorIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Eventos
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public Task CrearAsync(Guid id)

@@ -6,7 +6,6 @@ namespace EventsMng.Application.Contracts.Dtos.Inscripcion
         public string NombreEvento { get; set; }
         public DateTime FechaEvento { get; set; }
         public string Estado { get; set; }
-        public double Asistencia { get; set; }
         public bool CertificadoEmitido { get; set; }
     }
 }
