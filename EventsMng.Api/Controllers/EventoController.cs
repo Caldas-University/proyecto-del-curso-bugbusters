@@ -31,9 +31,13 @@ namespace EventsMng.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Evento>> GetEvento(Guid id)
         {
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = await _context.Eventos
+                .Include(e => e.Inscripciones)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
             if (evento == null)
                 return NotFound();
+
             return evento;
         }
 

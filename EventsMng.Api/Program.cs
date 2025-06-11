@@ -23,6 +23,7 @@ builder.Services.AddScoped<IEventoServiceApp, EventoServiceApp>();
 builder.Services.AddScoped<IParticipanteServiceApp, ParticipanteServiceApp>();
 builder.Services.AddScoped<ICertificadoServiceApp, CertificadoServiceApp>();
 builder.Services.AddScoped<IListaEsperaServiceApp, ListaEsperaServiceApp>();
+builder.Services.AddScoped<IInscripcionRepository, InscripcionRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

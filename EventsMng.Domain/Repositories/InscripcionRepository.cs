@@ -1,4 +1,5 @@
-﻿using EventsMng.Domain.Repositories;
+﻿using EventsMng.Domain.Entities;
+using EventsMng.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,26 @@ namespace EventsMng.Infrastructure.Repositories
         }
 
         public Task ObtenerPorEventoAsync(Guid eventoId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IInscripcionRepository.AgregarAsync(Inscripcion inscripcion)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IInscripcionRepository.GuardarCambiosAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Inscripcion>> IInscripcionRepository.ObtenerPorEventoAsync(Guid eventoId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Inscripcion?> IInscripcionRepository.ObtenerPorIdAsync(Guid id)
         {
             throw new NotImplementedException();
         }

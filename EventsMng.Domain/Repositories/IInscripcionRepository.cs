@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EventsMng.Domain.Entities;
 
 namespace EventsMng.Domain.Repositories
 {
     public interface IInscripcionRepository
     {
-        Task InscribirAsync(Guid eventoId, Guid participanteId);
-        Task ObtenerPorEventoAsync(Guid eventoId);
+        Task AgregarAsync(Inscripcion inscripcion);
+        Task<Inscripcion?> ObtenerPorIdAsync(Guid id);
+        Task<List<Inscripcion>> ObtenerPorEventoAsync(Guid eventoId);
+        Task GuardarCambiosAsync();
     }
-
 }

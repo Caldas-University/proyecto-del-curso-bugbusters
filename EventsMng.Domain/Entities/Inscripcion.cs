@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EventsMng.Domain.Entities
@@ -20,9 +21,13 @@ namespace EventsMng.Domain.Entities
 
         public Participante? Participante { get; set; }
 
+        [JsonIgnore]
         public Evento? Evento { get; set; }
         public void Cancelar()
         {
+            if (Estado == InscripcionEstado.Cancelada || Estado == InscripcionEstado.Asistio)
+                throw new InvalidOperationException("No se puede cancelar una inscripción ya cancelada o confirmada como asistida.");
+
             Estado = InscripcionEstado.Cancelada;
         }
 
