@@ -3,7 +3,6 @@ using EventsMng.Infrastructure.Persistence;
 using EventsMng.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using EventsMng.Application.Contracts.Services;
-using EventsMng.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

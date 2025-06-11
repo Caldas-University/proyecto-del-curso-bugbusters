@@ -50,5 +50,6 @@ namespace EventsMng.Application.Services
             await _repository.AgregarAsync(eventoId, participanteId);
             return Result.Ok();
         }
-}
+    }
 
+}

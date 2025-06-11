@@ -1,5 +1,4 @@
 ﻿using EventsMng.Domain.Entities;
-using EventsMng.Domain.Repositories;
 using EventsMng.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;

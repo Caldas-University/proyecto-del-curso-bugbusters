@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using EventsMng.Application.Contracts.Dtos.Inscripcion;
 using EventsMng.Application.Contracts.Services;
 using EventsMng.Domain.Entities;
-using EventsMng.Domain.Repositories;
+using EventsMng.Infrastructure.Repositories;
 
 namespace EventsMng.Application.Services
 {

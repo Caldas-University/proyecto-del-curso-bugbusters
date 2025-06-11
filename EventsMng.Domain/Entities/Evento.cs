@@ -25,6 +25,10 @@ namespace EventsMng.Domain.Entities
             return DateTime.UtcNow < FechaInicio;
         }
 
+        public bool ListaEsperaHabilitada { get; set; } = false;
+
+        public int CuposDisponibles { get; set; } = 0;
+
         // Un evento puede tener varios certificados
         public ICollection<Certificado>? Certificados { get; set; }
 
